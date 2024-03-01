@@ -29,9 +29,15 @@ SELECT * FROM `teachers` WHERE `phone` IS NULL; -- per sapere quali sono
 
 -- QUERY CON GROUP BY:
 -- 1. Contare quanti iscritti ci sono stati ogni anno
+SELECT YEAR(`enrolment_date`) as `Anno immatricolazione`, COUNT(YEAR(`enrolment_date`)) `Iscritti` FROM `students` GROUP BY `Anno immatricolazione`;
 
 -- 2. Contare gli insegnanti che hanno l'ufficio nello stesso edificio
+SELECT `office_address`, COUNT(`office_address`) FROM `teachers` GROUP BY `office_address`;
+SELECT `office_address`, COUNT(`office_address`) FROM `teachers` GROUP BY `office_address` HAVING COUNT(`office_address`) > 1; -- tolgo gli edifici in cui c'è un solo insegnante
 
 -- 3. Calcolare la media dei voti di ogni appello d'esame
+SELECT `exam_id`, ROUND(AVG(`vote`), 2) AS `Voto medio` FROM `exam_student` GROUP BY `exam_id`;
+SELECT `exam_id`, ROUND(AVG(`vote`), 2) AS `Voto medio` FROM `exam_student` WHERE `vote` > 17 GROUP BY `exam_id`; -- tolgo i voti al di sotto del 18
 
 -- 4. Contare quanti corsi di laurea ci sono per ogni dipartimento
+SELECT `department_id` `Dipartimento`, COUNT(`department_id`) AS `Quanti corsi di laurea` FROM `degrees` GROUP BY `department_id`;
