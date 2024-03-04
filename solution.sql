@@ -51,6 +51,8 @@ SELECT `department_id` AS `Dipartimento`, COUNT(*) AS `Quanti corsi di laurea` F
 SELECT S.`id`, S.`name`, S.`surname`, D.`name` FROM `students` AS S JOIN `degrees` AS D ON S.degree_id = D.`id` WHERE D.`name` = 'Corso di Laurea in Economia';
 
 -- 2. Selezionare tutti i Corsi di Laurea del Dipartimento di Neuroscienze
+SELECT * FROM `degrees` AS DEG JOIN `departments` AS DEP ON DEG.`department_id` = DEP.`id` WHERE DEP.`name` = 'Dipartimento di Neuroscienze';
+SELECT * FROM `departments` AS DEP JOIN `degrees` AS DEG ON DEG.`department_id` = DEP.`id` WHERE DEP.`id` = 7;
 
 -- 3. Selezionare tutti i corsi in cui insegna Fulvio Amato (id=44)
 
